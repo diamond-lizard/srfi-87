@@ -1,0 +1,10 @@
+;;; srfi-87.egg -*- Scheme -*- vim: ft=scheme:
+
+((author "Chongkai Zhu")
+ (maintainer "Sergey Goldgaber")
+ (synopsis "SRFI-87: => in case clauses")
+ (version "0.1")
+ (category lang-exts)
+ (test-dependencies test)
+ (license "BSD")
+ (components (extension srfi-87)))
