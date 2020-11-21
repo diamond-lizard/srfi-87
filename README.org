@@ -1,6 +1,4 @@
 * SRFI-87: => in case clauses
-** Author
-Chongkai Zhu
 ** Abstract
 This SRFI proposes an extension to the case syntax to allow the => clauses as in cond.
 ** Rationale
@@ -87,6 +85,9 @@ If a cond or case expression is in a tail context, and has a clause of the form 
          (begin result1 result2 ...)
          (case key clause clauses ...)))))
 #+END_SRC
+** Author
+ * Chongkai Zhu
+ * Packaged for Chicken Scheme 5 by Sergey Goldgaber
 ** Copyright
 Copyright (C) 2006 Chongkai Zhu. All Rights Reserved.
 
