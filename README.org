@@ -6,35 +6,38 @@ This SRFI proposes an extension to the case syntax to allow the => clauses as in
 ** Rationale
 case is introduced as a syntax sugar based on cond, which helps to save a explicit calling to let. But without the => clause, if the result expression needs the value of key, the let can't be saved. For an easy example, suppose we want the following:
 
-    (case (get-symbol)
-      ((true) #t)
-      ((false) #f)
-      (else => (lambda (x) x)))
+#+BEGIN_SRC scheme
+(case (get-symbol)
+  ((true) #t)
+  ((false) #f)
+  (else => (lambda (x) x)))
+#+END_SRC
 
 Without the => clause in case, we have to write:
 
-    (let ((key (get-symbol)))
-      (cond ((eq? key 'true) #t)
-            ((eq? key 'false) #f)
-            (else key)))
+#+BEGIN_SRC scheme
+(let ((key (get-symbol)))
+  (cond ((eq? key 'true) #t)
+        ((eq? key 'false) #f)
+        (else key)))
+#+END_SRC
 ** Specification
 *** (Based on R5RS section 4.2.1 Conditionals)
-**** Syntax
 library syntax: case <key> <clause1> <clause2> ...
-
-    Syntax: <Key> may be any expression. Each <clause> should have the form
+**** Syntax
+<Key> may be any expression. Each <clause> should have the form
 
     ((<datum1> ...) <expression1> <expression2> ...),
 
-    where each <datum> is an external representation of some object. All the <datum>s must be distinct. The last <clause> may be an "else clause," which has the form
+where each <datum> is an external representation of some object. All the <datum>s must be distinct. The last <clause> may be an "else clause," which has the form
 
     (else <expression1> <expression2> ...).
 
-    Alternatively, a <clause> may be of the form
+Alternatively, a <clause> may be of the form
 
     ((<datum1> ...) => <expression>)
 
-    and the last <clause> may be of the form
+and the last <clause> may be of the form
 
     (else => <expression>)
 **** Semantics
